@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" role="img" aria-label="Pistol">
+  <rect width="320" height="240" fill="#e7eaec"/>
+  <g fill="#18222c">
+    <path d="M84 84h152v34H84z"/>
+    <path d="M84 118h36l26 78h-38z"/>
+    <path d="M120 118h44v16h-44z"/>
+    <path d="M164 118h40v10h-40z"/>
+  </g>
+  <g fill="#5a6673">
+    <path d="M132 134c17 0 27 11 27 26h-11c0-10-6-15-16-15z"/>
+    <rect x="92" y="92" width="9" height="7"/>
+    <rect x="222" y="92" width="8" height="7"/>
+  </g>
+  <rect x="84" y="84" width="152" height="5" fill="#a67c2e"/>
+</svg>

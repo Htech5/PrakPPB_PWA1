@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" role="img" aria-label="Shotgun">
+  <rect width="320" height="240" fill="#e7eaec"/>
+  <g fill="#18222c">
+    <path d="M22 102h278v18H22z"/>
+    <path d="M60 120h150v14H60z"/>
+    <path d="M22 96h20v30H22z"/>
+    <path d="M210 120h42v18h-42z"/>
+    <path d="M252 120h48l4 56h-46z"/>
+    <path d="M222 138h24v12h-24z"/>
+  </g>
+  <g fill="#5a6673">
+    <path d="M236 150c14 0 22 9 22 22h-10c0-8-5-12-12-12z"/>
+    <rect x="96" y="120" width="70" height="10"/>
+  </g>
+  <rect x="22" y="102" width="278" height="4" fill="#a67c2e"/>
+</svg>
