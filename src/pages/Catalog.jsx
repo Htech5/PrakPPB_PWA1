@@ -1,7 +1,25 @@
+import { useMemo, useState } from 'react';
 import GUNS from '../data/guns.js';
 import GunCard from '../components/GunCard.jsx';
 
+const TYPES = ['All', ...new Set(GUNS.map((g) => g.type))];
+
 function Catalog() {
+  const [query, setQuery] = useState('');
+  const [type, setType] = useState('All');
+
+  const shown = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return GUNS.filter(
+      (g) =>
+        (type === 'All' || g.type === type) &&
+        (!q ||
+          g.name.toLowerCase().includes(q) ||
+          g.type.toLowerCase().includes(q) ||
+          g.caliber.toLowerCase().includes(q)),
+    );
+  }, [query, type]);
+
   return (
     <>
       <section className="masthead">
@@ -12,15 +30,48 @@ function Catalog() {
         </p>
       </section>
       <section>
+        <div className="filters">
+          <label className="field">
+            <span className="field-label">Search</span>
+            <input
+              className="search"
+              type="search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Name, type, or caliber"
+            />
+          </label>
+          <div className="chips" role="group" aria-label="Filter by type">
+            {TYPES.map((t) => (
+              <button
+                key={t}
+                type="button"
+                className={t === type ? 'chip active' : 'chip'}
+                onClick={() => setType(t)}
+              >
+                {t}
+              </button>
+            ))}
+          </div>
+        </div>
+
         <div className="list-head">
           <h2>Current stock</h2>
-          <span className="count">{GUNS.length} pieces</span>
+          <span className="count">{shown.length} pieces</span>
         </div>
-        <ul className="stock">
-          {GUNS.map((gun) => (
-            <GunCard key={gun.name} gun={gun} />
-          ))}
-        </ul>
+
+        {shown.length === 0 ? (
+          <p className="empty">
+            No guns match “{query.trim() || type}”. Clear the search or pick
+            another type.
+          </p>
+        ) : (
+          <ul className="stock">
+            {shown.map((gun) => (
+              <GunCard key={gun.name} gun={gun} />
+            ))}
+          </ul>
+        )}
       </section>
     </>
   );

@@ -221,3 +221,94 @@
 .footer p {
   margin: 0;
 }
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 16px;
+  padding: 28px 0 4px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1 1 260px;
+}
+
+.field-label {
+  color: var(--steel);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.search {
+  padding: 9px 12px;
+  font: inherit;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--line);
+}
+
+.search:focus-visible {
+  outline: none;
+  border-color: var(--brass);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  padding: 8px 14px;
+  font: inherit;
+  font-size: 0.9rem;
+  color: var(--steel);
+  background: transparent;
+  border: 1px solid var(--line);
+  cursor: pointer;
+}
+
+.chip:hover {
+  border-color: var(--brass);
+}
+
+.chip.active {
+  color: var(--paper);
+  background: var(--ink);
+  border-color: var(--ink);
+}
+
+.empty {
+  margin: 0;
+  padding: 40px 16px;
+  color: var(--steel);
+  text-align: center;
+  border: 1px dashed var(--line);
+  background: #fff;
+}
+
+.install {
+  padding: 8px 14px;
+  font: inherit;
+  font-size: 0.9rem;
+  color: var(--paper);
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  cursor: pointer;
+}
+
+.install:active {
+  transform: translateY(1px);
+}
+
+/* photos and svgs share one frame so every card is identical */
+.card-img,
+.popup-img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: #fff;
+}

@@ -1,3 +1,5 @@
+import InstallButton from './InstallButton.jsx'
+
 const NAV = ['Catalog', 'About', 'Contact']
 
 function Header({ tab, onTab }) {
@@ -16,6 +18,7 @@ function Header({ tab, onTab }) {
           </button>
         ))}
       </nav>
+      <InstallButton />
     </header>
   )
 }

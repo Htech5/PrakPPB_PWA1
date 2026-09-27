@@ -64,6 +64,39 @@ const GUNS = [
       `The other pump gun. Twin action bars, a simple safety on ` +
       `the tang, and a price that leaves money for ammunition.`,
   },
+  {
+    name: 'Beretta 92S',
+    type: 'Pistol',
+    caliber: '9mm',
+    price: 749,
+    image: '/guns/beretta92.jpg',
+    description:
+      `Open-slide, alloy-framed, and short-recoil operated. ` +
+      `Fifteen rounds, a trigger that smooths out after a few hundred, and ` +
+      `Italian lines no polymer frame has matched.`,
+  },
+  {
+    name: 'Benelli M4 Super 90',
+    type: 'Shotgun',
+    caliber: '12 Gauge',
+    price: 1899,
+    image: '/guns/benellim4.jpg',
+    description:
+      `Gas-operated semi-auto that cycles buckshot and slugs ` +
+      `without a tuning session. Issued to the Marines, built to run wet, ` +
+      `dirty, and fast.`,
+  },
+  {
+    name: 'Heckler & Koch MP5',
+    type: 'Submachine Gun',
+    caliber: '9mm',
+    price: 2399,
+    image: '/guns/mp5.jpg',
+    description:
+      `Roller-delayed blowback, closed bolt, and a recoil ` +
+      `impulse that barely disturbs the sights. Four decades as the ` +
+      `standard every entry team measured against.`,
+  },
 ];
 
 export default GUNS;
