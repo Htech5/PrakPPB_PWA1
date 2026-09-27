@@ -22,13 +22,24 @@ function InstallButton() {
   return (
     <button
       type="button"
-      className="install"
+      className="install-fab"
+      title="Install app"
+      aria-label="Install app"
       onClick={async () => {
         await prompt.prompt();
         setPrompt(null);
       }}
     >
-      Install app
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+        <path
+          d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M4.5 18.5h15"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
     </button>
   );
 }
