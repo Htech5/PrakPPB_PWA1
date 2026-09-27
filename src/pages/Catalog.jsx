@@ -32,7 +32,7 @@ function Catalog() {
       <section>
         <div className="filters">
           <label className="field">
-            <span className="field-label">Search</span>
+            <span className="field-label">Cari</span>
             <input
               className="search"
               type="search"
