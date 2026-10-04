@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 
-function GunCard({ gun }) {
+function GunCard({ gun, onAdd }) {
   const popup = useRef(null)
 
   return (
@@ -12,6 +12,16 @@ function GunCard({ gun }) {
           {gun.type} · {gun.caliber}
         </span>
         <span className="price">${gun.price.toLocaleString()}</span>
+      </button>
+      <button
+        type="button"
+        className="add-cart-btn"
+        onClick={(e) => {
+          e.stopPropagation()
+          onAdd(gun.name)
+        }}
+      >
+        Add to cart
       </button>
 
       <dialog
