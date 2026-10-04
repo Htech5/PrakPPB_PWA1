@@ -4,13 +4,24 @@ import GunCard from '../components/GunCard.jsx';
 
 const TYPES = ['All', ...new Set(GUNS.map((g) => g.type))];
 
-function Catalog() {
+function Catalog({ onAdd }) {
   const [query, setQuery] = useState('');
   const [type, setType] = useState('All');
+  const [sortKey, setSortKey] = useState(null); // 'name' | 'price' | null
+  const [sortAsc, setSortAsc] = useState(true);
+
+  const toggleSort = (key) => {
+    if (sortKey === key) {
+      setSortAsc((a) => !a);
+    } else {
+      setSortKey(key);
+      setSortAsc(true);
+    }
+  };
 
   const shown = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return GUNS.filter(
+    const list = GUNS.filter(
       (g) =>
         (type === 'All' || g.type === type) &&
         (!q ||
@@ -18,7 +29,15 @@ function Catalog() {
           g.type.toLowerCase().includes(q) ||
           g.caliber.toLowerCase().includes(q)),
     );
-  }, [query, type]);
+    if (sortKey) {
+      list.sort((a, b) => {
+        const diff =
+          sortKey === 'price' ? a.price - b.price : a.name.localeCompare(b.name);
+        return sortAsc ? diff : -diff;
+      });
+    }
+    return list;
+  }, [query, type, sortKey, sortAsc]);
 
   return (
     <>
@@ -55,6 +74,23 @@ function Catalog() {
           </div>
         </div>
 
+        <div className="sort-controls" role="group" aria-label="Sort">
+          <button
+            type="button"
+            className={sortKey === 'name' ? 'chip active' : 'chip'}
+            onClick={() => toggleSort('name')}
+          >
+            Name {sortKey === 'name' ? (sortAsc ? '↑' : '↓') : ''}
+          </button>
+          <button
+            type="button"
+            className={sortKey === 'price' ? 'chip active' : 'chip'}
+            onClick={() => toggleSort('price')}
+          >
+            Price {sortKey === 'price' ? (sortAsc ? '↑' : '↓') : ''}
+          </button>
+        </div>
+
         <div className="list-head">
           <h2>Current stock</h2>
           <span className="count">{shown.length} pieces</span>
@@ -68,7 +104,7 @@ function Catalog() {
         ) : (
           <ul className="stock">
             {shown.map((gun) => (
-              <GunCard key={gun.name} gun={gun} />
+              <GunCard key={gun.name} gun={gun} onAdd={onAdd} />
             ))}
           </ul>
         )}
